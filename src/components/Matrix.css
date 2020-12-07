@@ -1,0 +1,10 @@
+.Matrix{
+    border: 1px solid black;
+    border-top: none;
+    border-bottom: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.row{
+    margin: 20px;
+}

@@ -1,0 +1,8 @@
+.Cell{
+    display: inline;
+    margin: 5px;
+}
+input{
+    width: 30px;
+    background-color: transparent;
+}
