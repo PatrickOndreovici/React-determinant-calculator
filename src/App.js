@@ -30,6 +30,30 @@ function App() {
     }
   }
 
+  const calculateDeterminant2 = async (size, det) => {
+    if (size == 2){
+      return det[0][0] * det[1][1] - det[0][1] * det[1][0]
+    }
+    let sum = 0
+    let sign = 1
+    for (let i = 0; i < size; ++i){
+      let newDet = []
+      for (let row = 1; row < size; ++row){
+        let aux = [];
+        for (let col = 0; col < size; ++col){
+          if (col == i){
+            continue;
+          }
+          aux.push(det[row][col])
+        }
+        newDet.push(aux);
+      }
+      let newDetValue = await calculateDeterminant2(size - 1, newDet)
+      sum = sum + det[0][i] * sign * newDetValue
+      sign = sign * (-1)
+    }
+    return sum
+  }
   const calculateDeterminant = () => {
     let perm = []
     let stack = new Array(matrix.size)
@@ -77,6 +101,7 @@ function App() {
     }
     setMatrix(newMatrix)
   }
+  console.log(calculateDeterminant2(matrix.size, matrix.cells))
   return (
     <div className="App">
       <Matrix matrix = {matrix} changeValue = {changeValue}></Matrix>
